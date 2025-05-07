@@ -18,5 +18,5 @@ jobs:
 
     - name: Run install script via SSH
       run: |
-        sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'bash -s' < install.sh
+        sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no -p 41000 ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'bash -s' < install.sh
 
