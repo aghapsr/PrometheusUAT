@@ -3,7 +3,7 @@ name: Install Prometheus via SSH
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
