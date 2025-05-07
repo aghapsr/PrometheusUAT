@@ -1,0 +1,22 @@
+name: Install Prometheus via SSH
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install sshpass
+      run: sudo apt-get update && sudo apt-get install -y sshpass
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run install script via SSH
+      run: |
+        sshpass -p "${{ secrets.SSH_PASS }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'bash -s' < install.sh
+
